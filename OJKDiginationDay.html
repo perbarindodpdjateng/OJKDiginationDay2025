@@ -2,18 +2,18 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" loading = lazy>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Viewer Aman</title>
-    <style> 
+    <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            width: 100%;
             margin: 0;
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
+            background-color: #eef2f3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.5s ease;
         }
         #login-container, #viewer-container {
             display: flex;
@@ -21,33 +21,62 @@
             align-items: center;
             justify-content: top;
             height: 100vh;
+            width: 100%;
             text-align: center;
+            padding: 30px;
         }
         #viewer-container {
             display: none;
         }
         input, button {
             margin: 5px;
-            padding: 10px;
+            padding: 20px;
             font-size: 16px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
         a {
             font-size: 18px;
             color: #007bff;
             text-decoration: none;
             font-weight: bold;
+            margin: 5px 0;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            input, button {
+                width: 80%;
+            }
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.body.style.opacity = "1"; // Memastikan halaman segera tampil
-        });
+        const credentials = {
+            username: btoa("peserta"),
+            password: btoa("120825")
+        };
 
         function checkLogin() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
+            const inputUser = btoa(document.getElementById("username").value.trim());
+            const inputPass = btoa(document.getElementById("password").value.trim());
 
-            if (username === "peserta" && password === "120825") {
+            if (!inputUser || !inputPass) {
+                alert("Username dan password wajib diisi!");
+                return;
+            }
+
+            if (inputUser === credentials.username && inputPass === credentials.password) {
                 document.getElementById("login-container").style.display = "none";
                 document.getElementById("viewer-container").style.display = "flex";
             } else {
@@ -57,11 +86,12 @@
     </script>
 </head>
 <body>
-    <div id="login-container" loading = lazy><br> 
-<strong>BERITA, MATERI & FOTO</strong>
-<b>OJK Digination Day 2025</b>
-Hotel Tentream Semarang<br>
-12 Agustus 2025<br>
+    <div id="login-container">
+<br>
+        <strong>BERITA, MATERI & FOTO</strong>
+        <b>OJK Digination Day 2025</b>
+        Hotel Tentrem Semarang<br>
+        12 Agustus 2025<br>
         <h2>Login</h2>
         <input type="text" id="username" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
@@ -70,19 +100,12 @@ Hotel Tentream Semarang<br>
 
     <div id="viewer-container">
         <h2>Materi PDF & Foto JPG</h2>
-        <p>Silakan unduh materi PDF & Foto JPG dng klik tautan di bawah :</p>
+        <p>Silakan unduh materi PDF & Foto JPG dengan klik tautan di bawah:</p>
         <a href="https://drive.google.com/uc?export=download&id=1hfgXKkAruLD6L5fVZT77nz1tpKgvw9n1">Unduh Perbarindo DPD Jawa Tengah</a>
-<br>
-        <a href="https://drive.google.com/uc?export=download&id=1ZssumXQG84sYh0oXIHqHnJ-ewY5CBZR3">Unduh Asosiasi Fintech Indonesia (AFTECH)</a><br>
-        <a href="https://drive.google.com/uc?export=download&id=14IRWOy9nvOzI0Mw6ELnomiwHCCXu9D4x">Unduh AIForesee : platform penilaian kredit alternatif</a><br>
-        <a href="https://drive.google.com/uc?export=download&id=15ZfToFd10NiOc1tjy4ldotVtx1jmYhQ4">Unduh Asosiasi Fintech Syariah Indonesia (AFSI)</a><br>
+        <a href="https://drive.google.com/uc?export=download&id=1ZssumXQG84sYh0oXIHqHnJ-ewY5CBZR3">Unduh Asosiasi Fintech Indonesia (AFTECH)</a>
+        <a href="https://drive.google.com/uc?export=download&id=14IRWOy9nvOzI0Mw6ELnomiwHCCXu9D4x">Unduh AIForesee: platform penilaian kredit alternatif</a>
+        <a href="https://drive.google.com/uc?export=download&id=15ZfToFd10NiOc1tjy4ldotVtx1jmYhQ4">Unduh Asosiasi Fintech Syariah Indonesia (AFSI)</a>
         <a href="https://drive.google.com/drive/folders/1Hc1Pp8t4tmvqKtm7hABnO7CkCGX14NS9">Lihat Folder Dokumentasi</a>
-
     </div>
 </body>
-
 </html>
-
-
-
-
